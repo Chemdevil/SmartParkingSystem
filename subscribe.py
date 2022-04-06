@@ -23,13 +23,13 @@ mqttc.on_message = on_message                               # assign on_message 
 #mqttc.on_log = on_log
 
 #### Change following parameters #### 
-awshost = "a3cka59094cwjs-ats.iot.us-east-2.amazonaws.com"      # Endpoint
-awsport = 8883                                              # Port no.   
-clientId = "SmartParkingSensor1"                                     # Thing_Name
-thingName = "SmartParkingSensor1"                                    # Thing_Name
-caPath = r"c:\users\shrey\Downloads\AmazonRootCA1.pem"                                      # Root_CA_Certificate_Name
-certPath = r"c:\users\shrey\Downloads\b649e3c89e06212d62de3ca10efbc631bb30906298a17fd29f6702f6da72a446-certificate.pem.crt"                     # <Thing_Name>.cert.pem
-keyPath = r"c:\users\shrey\Downloads\b649e3c89e06212d62de3ca10efbc631bb30906298a17fd29f6702f6da72a446-private.pem.key"                          # <Thing_Name>.private.key
+awshost = ""      # Endpoint
+awsport =                                               # Port no.   
+clientId = ""                                     # Thing_Name
+thingName = ""                                    # Thing_Name
+caPath = r""                                      # Root_CA_Certificate_Name
+certPath = r""                     # <Thing_Name>.cert.pem
+keyPath = r""                          # <Thing_Name>.private.key
  
 mqttc.tls_set(caPath, certfile=certPath, keyfile=keyPath, cert_reqs=ssl.CERT_REQUIRED, tls_version=ssl.PROTOCOL_TLSv1_2, ciphers=None)      
  
