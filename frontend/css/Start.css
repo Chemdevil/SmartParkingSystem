@@ -1,0 +1,76 @@
+.button {
+  position: relative;
+  left:80px;
+  border-radius: 15px;
+  color:white;
+  background-color: rgb(54, 54, 57);
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  font-family:  Helvetica, sans-serif;
+  /*margin: 4px 2px;*/
+  cursor: pointer;
+}
+.button:hover
+{
+  background-image:none;
+  background-color: rgb(97, 97, 100);
+}
+h1 {
+  position: relative;
+  background-image: linear-gradient(rgba(0,0,0, 0.3) 50%,rgba(0,0,0, 0.3) 50%);
+  font-family:  Helvetica, sans-serif;
+  font-size:50px;
+  width:60%;
+  left:250px;
+  padding: 20px 30px 20px 80px;
+  text-align: center;
+  color: #ffffff;
+}
+
+body {
+  /*background: linear-gradient(110deg, #12232e 50%, #007cc7 80%);*/
+  background-image: url("/img/start1.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.dot {
+  height: 65px;
+  width: 65px;
+  background-color: #b2b3b5;
+  border-radius: 75%;
+  display: inline-block;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  padding: 10px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+label {
+  color: gray;
+  font-size: 20px;
+}
+
+.center_div {
+  position: relative;
+  background: linear-gradient(110deg, rgba(0, 0, 0, 0.1) 100%,rgba(0, 0, 0, 0.1) 100%);
+  margin: 0 auto;
+  width: 30%
+}
+
+p {
+  color: white;
+}

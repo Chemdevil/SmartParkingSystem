@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!--  <meta http-equiv="refresh" content="5" />-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<!--<script type="text/javascript" src="js/vendor/Start.js"></script>-->
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
+<style>
+  #invoice-POS {
+    box-shadow: 0 0 1in -0.25in rgba(0, 0, 0, 0.5);
+    padding: 2mm;
+    margin: 0 auto;
+    width: 48mm;
+    background: #ffffff;
+  }
+
+  ::selection {background: #f31544; color: #FFF;}
+
+  .moz-selection {background: #f31544; color: #FFF;}
+  h1{
+    font-size: 1.5em;
+    color: #222;
+  }
+  h2{font-size: .9em;}
+  h3{
+    font-size: 1.2em;
+    font-weight: 300;
+    line-height: 2em;
+  }
+  p{
+    font-size: .7em;
+    color: #666;
+    line-height: 1.2em;
+  }
+
+  #top, #mid,#bot{ /* Targets all id with 'col-' */
+    border-bottom: 1px solid #EEE;
+  }
+
+  #top{min-height: 100px;}
+  #mid{min-height: 80px;}
+  #bot{ min-height: 50px;}
+
+  #top .logo{
+  //float: left;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background: url(logo.jpg) no-repeat;
+    background-size: 60px 60px;
+  }
+  .info{
+    display: block;
+  //float:left;
+    margin-left: 0;
+  }
+  .title{
+    float: right;
+  }
+  .title p{text-align: right;}
+  table{
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .vl {
+    border-left: 2px solid green;
+    height: 10px;
+  }
+  td{
+  //padding: 5px 0 5px 15px;
+  //border: 1px solid #EEE
+  }
+  .tabletitle{
+  //padding: 5px;
+    font-size: .5em;
+    background: #EEE;
+  }
+  .service{border-bottom: 1px solid #EEE;}
+  .item{width: 24mm;}
+  .itemtext{font-size: .5em;}
+
+  #legalcopy{
+    margin-top: 5mm;
+  }
+  .arrange-horizontally{
+    display: inline-block;
+    text-align: center;
+  }
+  .arrange-vertically{
+    display: block;
+  }
+</style>
+<body>
+<div id="invoice-POS">
+
+  <center id="top">
+    <div class="logo"></div>
+    <div class="info">
+      <h2>PARKING SLIP</h2>
+    </div><!--End Info-->
+  </center><!--End InvoiceTop-->
+  <div id="mid">
+    <div class="info">
+      <p>-----------------------------------------------</p>
+      <h2>Contact Info</h2>
+      <p>
+        Address: <span id="Phone_Number"></span></br>
+        Email: <span id="Email"></span></br>
+      </p>
+      <p>-----------------------------------------------</p>
+    </div>
+  </div><!--End Invoice Mid-->
+  <div>
+    <div class="row" >
+      <div>
+        <p>-----------------------------------------------</p>
+        <p>
+        Booking Price:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="booking_Price"></span>
+        <span id="price">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rs. 55 </span>
+        </p>
+        <p>-----------------------------------------------</p>
+      </div>
+    </div>
+  </div>
+  </div><!--End InvoiceBot-->
+</div><!--End Invoice-->
+<script type="text/javascript">
+  let message = location.hash;
+  message = message.substring(1); // strip off leading #
+  let emailPOS, phonePOS;
+  const firebaseConfig = {
+    apiKey: "AIzaSyDfWk8NgxQQBJVK2Pm6C1HVkr-iLer6hPY",
+    authDomain: "userdata-c186e.firebaseapp.com",
+    databaseURL: "https://userdata-c186e-default-rtdb.firebaseio.com",
+    projectId: "userdata-c186e",
+    storageBucket: "userdata-c186e.appspot.com",
+    messagingSenderId: "407309419325",
+    appId: "1:407309419325:web:e6d4203664ab983f11fb54"
+  };
+  firebase.initializeApp(firebaseConfig);
+  firebase.database().ref(message).on('value',(snap)=>{
+    emailPOS=(snap.val().Email.toString());
+    phonePOS=(snap.val().phone.toString());
+    document.getElementById("Phone_Number").textContent=emailPOS;
+    document.getElementById("Email").textContent=phonePOS;
+  });
+
+  </script>
+</body>
+</html>

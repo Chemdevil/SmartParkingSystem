@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Status Parking Space</title>
+  <meta charset="UTF-8">
+<!--  <meta http-equiv="refresh" content="5" />-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/Start.css">
+</head>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<!--<script type="text/javascript" src="js/vendor/Start.js"></script>-->
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
+<body class="body">
+
+<div class="container">
+  <br>
+  <h1>Parking Space Status</h1>
+</div>
+<br>
+<br>
+<div class="container center_div">
+
+<form>
+  <div class="row" style="padding-left: 40px;">
+    <div class="column">
+      <span  id="slot1" class="dot"></span>
+    </div>
+    <div class="column" style="padding-left: 50px;">
+      <button id="btn1" type="button" class="button" onclick="func();">Slot 1</button>
+    </div>
+  </div>
+
+  <div class="row" style="padding-left: 40px;">
+    <div class=" column">
+      <span id="slot2" class="dot"></span>
+    </div>
+    <div class="column" style="padding-left: 50px;">
+      <button id="btn2" type="button" class="button" onclick="func();">Slot 2</button>
+    </div>
+  </div>
+
+  <div class="row" style="padding-left: 40px;">
+    <div class="column">
+      <span id="slot3" class="dot"></span>
+    </div>
+    <div class="column" style="padding-left: 50px;">
+      <button type="button" class="button" onclick="func();">Slot 3</button>
+    </div>
+  </div>
+
+</form>
+</div>
+
+<script type="text/javascript">
+  var firebaseConfig={
+      apiKey: "",
+      authDomain: "",
+      databaseURL: "",
+      projectId: "",
+      storageBucket: "",
+      messagingSenderId: "",
+      appId: "",
+      measurementId: ""
+
+  }
+  let park1,park2,park3;
+  firebase.initializeApp(firebaseConfig)
+  firebase.database().ref('Sensor1').on('value',(snap)=>{
+    park1=(snap.val().Sensor1);
+    console.log(park1)
+   func1();
+  });
+  firebase.database().ref('Sensor2').on('value',(snap)=>{
+    park2=(snap.val().Sensor2);
+    console.log(park2)
+    func2();
+  });
+  firebase.database().ref('Sensor3').on('value',(snap)=>{
+    park3=(snap.val().Sensor3);
+    console.log(park3)
+    func3();
+  });
+  function func1() {
+    if(park1===false){
+        document.getElementById("slot1").style.background="#00FF00";
+      }
+      else{
+        document.getElementById("slot1").style.background="#FF0000";
+      }
+  }
+  function func2() {
+    if(park2===false){
+      document.getElementById("slot2").style.background="#00FF00";
+    }
+    else{
+      document.getElementById("slot2").style.background="#FF0000";
+    }
+  }
+  function func3() {
+    if(park3===false){
+      document.getElementById("slot3").style.background="#00FF00";
+    }
+    else{
+      document.getElementById("slot3").style.background="#FF0000";
+    }
+  }
+function func(){
+  window.location.assign("loginPage.html");
+}
+
+</script>
+
+</body>
+
+</html>
