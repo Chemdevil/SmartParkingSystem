@@ -15,7 +15,7 @@
     "parcel-bundler": "^1.12.4"
   },
   "dependencies": {
-    "aws-iot-device-sdk": "^2.2.11",
+    "aws-iot-device-sdk": "^2.2.13",
     "exceljs": "^4.3.0"
   }
 }
